@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Renter</title>
+    <style>
+        /* General Styles */
+        body {
+            background-image: url("https://th.bing.com/th/id/OIP.Gal8T40MNWTINM15QEuLAwHaLH?rs=1&pid=ImgDetMain");
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        table {
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            background-color: #5a9;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4a8;
+        }
+
+        .fas {
+            font-size: 20px;
+            color: white;
+        }
+
+        /* Popup Styles */
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        #popup button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #5a9;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        #popup button:hover {
+            background-color: #4a8;
+        }
+
+        /* Rating Display */
+        #rating-display {
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        #rating-display span {
+            display: inline-block;
+            margin: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #rating-display .thumbs-up {
+            color: green;
+        }
+
+        #rating-display .thumbs-down {
+            color: red;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            input {
+                font-size: 14px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 8px 10px;
+            }
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <img src="logo 5.JPG" alt="" style="position:absolute;top:0px;left:0px;" height="100" width="100"> 
+    <h1>Search other Renter</h1>  
+    <table>
+        <tr>
+            <td>
+                <input type="text" id="phone-number" placeholder="Enter phone number">
+            </td>
+            <td>
+                <button onclick="showPopup()">Rate</button>
+            </td>
+        </tr>
+    </table>
+    
+    <!-- Current Rating Display -->
+    <div id="rating-display">
+        <p>Your Current Rating <span id="current-number">N/A</span>:</p>
+        <span class="thumbs-up">👍 <span id="thumbs-up-count">0</span></span>
+        <span class="thumbs-down">👎 <span id="thumbs-down-count">0</span></span>
+    </div>
+
+    <!-- Popup -->
+    <div id="popup">
+        <h2 id="popup-text"></h2>
+        <button onclick="rateThumbsUp()">👍 Thumbs Up</button>
+        <button onclick="rateThumbsDown()">👎 Thumbs Down</button>
+        <br><br>
+        <button onclick="closePopup()">View only</button>
+    </div>
+
+    <script>
+        let renterRatings = {}; // Stores renter ratings as key-value pairs (phone: { thumbsUp, thumbsDown })
+
+        // Function to show the popup
+        function showPopup() {
+            const phoneNumber = document.getElementById("phone-number").value.trim();
+            if (!phoneNumber) {
+                alert("Please enter a phone number!");
+                return;
+            }
+
+            // Update the rating display for the searched number
+            updateRatingDisplay(phoneNumber);
+
+            // Show the popup for rating
+            document.getElementById("popup-text").textContent = `Please rate the following number: ${phoneNumber}`;
+            document.getElementById("popup").style.display = "block";
+            document.getElementById("current-number").textContent = phoneNumber;
+        }
+
+        // Function to update the current rating display
+        function updateRatingDisplay(phoneNumber) {
+            const thumbsUp = renterRatings[phoneNumber]?.thumbsUp || 0;
+            const thumbsDown = renterRatings[phoneNumber]?.thumbsDown || 0;
+
+            document.getElementById("thumbs-up-count").textContent = thumbsUp;
+            document.getElementById("thumbs-down-count").textContent = thumbsDown;
+        }
+
+        // Function to handle thumbs-up rating
+        function rateThumbsUp() {
+            const phoneNumber = document.getElementById("current-number").textContent;
+            if (!renterRatings[phoneNumber]) {
+                renterRatings[phoneNumber] = { thumbsUp: 0, thumbsDown: 0 };
+            }
+            renterRatings[phoneNumber].thumbsUp++;
+            alert("You rated Thumbs Up! Thank you!");
+            closePopup();
+            updateRatingDisplay(phoneNumber);
+        }
+
+        // Function to handle thumbs-down rating
+        function rateThumbsDown() {
+            const phoneNumber = document.getElementById("current-number").textContent;
+            if (!renterRatings[phoneNumber]) {
+                renterRatings[phoneNumber] = { thumbsUp: 0, thumbsDown: 0 };
+            }
+            renterRatings[phoneNumber].thumbsDown++;
+            alert("You rated Thumbs Down. Thank you for your feedback!");
+            closePopup();
+            updateRatingDisplay(phoneNumber);
+        }
+
+        // Function to close the popup
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
+</body>
+</html>
