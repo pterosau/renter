@@ -36,6 +36,17 @@
             overflow: hidden;
         }
 
+        .screen {
+            flex-grow: 1;
+            background: #fff;
+            padding: 20px;
+            overflow-y: auto;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         .status-bar {
             height: 20px;
             background: #ccc;
@@ -44,63 +55,6 @@
             padding: 0 10px;
             align-items: center;
             font-size: 12px;
-        }
-
-        .header {
-            display: flex;
-            align-items: center;
-            padding: 10px 20px;
-            background: #222;
-            color: white;
-        }
-
-        .header img {
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            margin-right: 10px;
-        }
-
-        .header .info {
-            flex-grow: 1;
-        }
-
-        .header .info h1 {
-            margin: 0;
-            font-size: 18px;
-        }
-
-        .header .info p {
-            margin: 0;
-            font-size: 12px;
-            color: #aaa;
-        }
-
-        .search-bar {
-            padding: 10px 20px;
-            background: #333;
-            display: flex;
-            justify-content: center;
-        }
-
-        .search-bar input {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 20px;
-            outline: none;
-            font-size: 14px;
-        }
-
-        .screen {
-            flex-grow: 1;
-            background: #fff;
-            padding: 20px;
-            overflow-y: auto;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
         .button-group {
@@ -142,67 +96,8 @@
             border: 2px solid #ccc;
             border-radius: 10px;
         }
-
-        .button1 {
-            background: linear-gradient(to bottom, blue, white, pink);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            margin: 5px;
-        }
-
-        .chat-popup {
-            position: absolute;
-            bottom: -50%;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            background: #222;
-            color: white;
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
-            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease-in-out;
-            transform: translateY(100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-        }
-
-        .chat-popup.open {
-            transform: translateY(0);
-        }
-
-        .chat-popup h2 {
-            margin: 10px 0;
-        }
-
-        .large-button {
-            width: 90%;
-            margin: 20px auto 0;
-            padding: 15px;
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-            background: linear-gradient(to right, #030603, #81c784);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: background 0.3s ease;
-        }
-
-        .large-button:hover {
-            background: linear-gradient(to right, #43a047, #66bb6a);
-        }
-
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/font-awesome.min.css">
 </head>
 <body>
     <div class="phone">
@@ -210,50 +105,39 @@
             <span>9:41</span>
             <span>?? 80%</span>
         </div>
-
-        <div class="header">
-            <img src="response logo version 3.JPG" alt="Profile Picture">
-            
-            <div class="info">
-                <h1>Response</h1>
-                <p>Name: Nicki minaj</p>
-                <p>Status: Edit</p>
-            </div>
-            <img src="coin icon.png" alt="">
-        </div>
-
-        <div class="search-bar">
-            <input type="text" placeholder="Search username...">
-        </div>
-
+        <h1 style="color:yellow;">Response</h1>
+        <p style="color:white;position:absolute;left:200px;top:10px;">Name:Samuel</p>
+        <p style="color:white;position:absolute;left:200px;top:50px;">Status:edit</p>
+        <p style="color:white;position:absolute;left:200px;top:150px;">Send a message</p>
+        <input type="search" placeholder="search username"style="color:white;position:absolute;left:200px;top:100px;">Search a user</input>
+        <img src="3.jpg" alt="" height="100" width="100" style="border-radius: 50%;">
+        
         <div class="screen">
-            <video src="1.mp4" style="width: 100%;height: 50%; border-radius: 10px;" controls></video>
+            <input type="search" placeholder="followers:100"><br>
+            <p style="position:absolute;top:500px;left:00px;">Country:Germany</p>
+       <p></p>
+            <img src="">
             <div class="button-group">
-                <a href="images-page.html"><button class="button1">Videos: <span style="color:grey;">0</span></button></a>
-                
-                <button class="button1">Photos: <span style="color:grey;">0</span></button>
-                <button class="button1">Important Links: <span style="color:grey;">0</span></button>
-                <button class="button1">Shop-sell: <span style="color:grey;">0</span></button>
-                <button class="button1">Block</button>
+                <button class="button">Videos:<span style="color:grey;">0</span></button>
+                <button class="button">Photos:<span style="color:grey;">0</span></button>
+                <button class="button">Important Links:0</button>
+                <button class="button">Resume:0</button>
+                <button class="button" style="color:grey;">Block</button>
+                <button class="button">Shop-sell <i class="fa-solid fa-baguette"></i></button>
+                <button class="button">Message<i class="fas fa-plane"></i></button>
+                <p style="position:absolute;top:670px;left:100px;">@ Response   2024</p>
+                    <p style="position:absolute;top:120px;left:200px;color:white">Transfer</p>
+                    <p style="position:absolute;top:102px;left:10px;">10</p>
+                        <img src="https://th.bing.com/th/id/OIP.6zabXUhpO2Tf6X87Cua01QHaHa?w=189&h=189&c=7&r=0&o=5&pid=1.7" style="position:absolute;top:230px;left:00px;" height="200" width="200">
+                        <img src="status state.JPG" alt="" style="position:absolute;top:390px;left:00px;">
+                <button class="button" style="position:absolute;top:550px;left:40px;height:100px;width:280px;">Chat |.></button>
             </div>
-            
-            <button class="large-button">Chat</button>
+            <div class="button-group">
+                <div class="button z-button">Follow</div>
+            </div>
         </div>
-
-        <div class="chat-popup" id="chatPopup">
-            <h2>Chat</h2>
-            <p>Welcome to the chat interface!</p>
-            <button class="button1" id="closeButton">Close</button>
-        </div>
+        
     </div>
-
-    <script>
-        const chatPopup = document.getElementById('chatPopup');
-        const closeButton = document.getElementById('closeButton');
-
-        closeButton.addEventListener('click', () => {
-            chatPopup.classList.remove('open');
-        });
-    </script>
+    <img src="response after login.JPG" alt="" style="position:absolute;top:100px;left:50px;">
 </body>
 </html>
