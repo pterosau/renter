@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone UI Simulator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, yellow, blue, black, white);
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .phone {
+            width: 360px;
+            height: 720px;
+            border: 16px solid #333;
+            border-radius: 40px;
+            background: #000;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .screen {
+            flex-grow: 1;
+            background: #fff;
+            padding: 20px;
+            overflow-y: auto;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .status-bar {
+            height: 20px;
+            background: #ccc;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            flex: 1 1 48%;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border: none;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .button.z-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            background-color: black;
+            color: white;
+            font-weight: bold;
+            margin: 0 auto;
+        }
+
+        .image-view {
+            width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: cover;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .button1 {
+    background: linear-gradient(to bottom, blue, white); /* Gradient from red to black */
+    color: white; /* Text color for visibility */
+    border: none; /* Remove default borders */
+    padding: 10px 20px; /* Add some padding */
+    font-size: 16px; /* Adjust text size */
+    cursor: pointer; /* Show pointer on hover */
+    border-radius: 5px; /* Rounded corners */
+    margin: 5px; /* Space between buttons */
+  }
+
+  
+  .button2 {
+    background: linear-gradient(to bottom, black,grey); /* Gradient from red to black */
+    color: white; /* Text color for visibility */
+    border: none; /* Remove default borders */
+    padding: 10px 20px; /* Add some padding */
+    font-size: 16px; /* Adjust text size */
+    cursor: pointer; /* Show pointer on hover */
+    border-radius: 5px; /* Rounded corners */
+    margin: 5px; /* Space between buttons */
+  }
+
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="phone">
+        <div class="status-bar">
+            <span>9:41</span>
+            <span>?? 80%</span>
+        </div>
+        <h1 style="color:yellow;">Response</h1>
+        <p style="color:white;position:absolute;left:200px;top:10px;">Name:Samuel</p>
+        <p style="color:white;position:absolute;left:200px;top:50px;">Status:edit</p>
+        <p style="color:white;position:absolute;left:200px;top:150px;">Send a message</p>
+        <input type="search" placeholder="search username"style="color:white;position:absolute;left:200px;top:100px;">Search a user</input>
+        <img src="3.jpg" alt="" height="100" width="100" style="border-radius: 50%;">
+        
+        <div class="screen">
+            <input type="search" placeholder="ai:ask anything"><br>
+            <p style="position:absolute;top:500px;left:00px;">status:Germany</p>
+       <p></p>
+            <img src="">
+            <div class="button-group">
+                <button class="button1">
+                    Videos:<span style="color:grey;border-color: red;">0</span>
+                  </button>
+                  <button class="button1">
+                    Photos:<span style="color:grey;">0</span>
+                  </button>
+                  <button class="button1">
+                    Important Links:0
+                  </button>
+                  <button class="button1">
+                    Shop-sell:0
+                  </button>
+                <button class="button1" style="color:grey;">Block</button>
+                <!-- <button class="button">Shop-sell <i class="fa-solid fa-baguette"></i></button> -->
+                <!-- <button class="button">Message<i class="fas fa-plane"></i></button> -->
+                <p style="position:absolute;top:670px;left:100px;">@ Response   2024</p>
+                    <p style="position:absolute;top:120px;left:200px;color:white">Transfer</p>
+                    <p style="position:absolute;top:220px;left:260px;color:black;">posts:10</p>
+                        <img src="https://th.bing.com/th/id/OIP.6zabXUhpO2Tf6X87Cua01QHaHa?w=189&h=189&c=7&r=0&o=5&pid=1.7" style="position:absolute;top:230px;left:00px;" height="200" width="200">
+                        <!-- <img src="status state.JPG" alt="" style="position:absolute;top:390px;left:00px;"> -->
+                <button class="button2" style="position:absolute;top:550px;left:40px;height:100px;width:280px;">Chat</button>
+            </div>
+            <div class="button-group">
+                <div class="button z-button">Follow</div>
+            </div>
+
+            <div class="button-group" style="position:absolute;top:250px;left:290px;">
+                <div class="button z-button">view </div>
+            </div>
+        </div>
+        
+    </div>
+    <img src="response after login.JPG" alt="" style="position:absolute;top:100px;left:50px;">
+</body>
+</html>
