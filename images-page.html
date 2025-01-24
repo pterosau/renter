@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Images Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f0f0; /* Neutral background for outside the phone */
+        }
+        .phone {
+            width: 360px;
+            height: 720px;
+            border: 16px solid #333;
+            border-radius: 40px;
+            background: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .header {
+            text-align: center;
+            padding: 10px;
+            color: black;
+            font-size: 18px;
+            background: lightgrey;
+            font-weight: bold;
+        }
+        .screen {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            box-sizing: border-box;
+            background: linear-gradient(135deg, blue, black); /* Blue-to-black gradient inside the phone */
+        }
+        .image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .image.profile {
+            border-radius: 50%; /* Makes the image circular */
+            width: 150px;      /* Adjusts the size for the profile picture */
+            height: 150px;     /* Ensures the aspect ratio stays circular */
+            grid-column: span 2; /* Takes up the entire row for emphasis */
+            justify-self: center;
+            margin-bottom: 10px;
+        }
+        .badge {
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            background: gold;
+            border-radius: 20px;
+            padding: 5px 10px;
+            width: fit-content;
+            margin: 0 auto 10px auto;
+            grid-column: span 2;
+        }
+        .back-button {
+            text-align: center;
+            padding: 10px;
+            background: black;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 10px auto;
+            width: 100px;
+        }
+        .back-button:hover {
+            background: grey;
+        }
+        /* Animation for uniqueness */
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px gold; }
+            50% { box-shadow: 0 0 15px orange; }
+            100% { box-shadow: 0 0 5px gold; }
+        }
+        .badge {
+            animation: glow 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="phone">
+        <div class="header">Posted Images</div>
+        <div class="screen">
+            <!-- Profile Picture -->
+            <img src="https://th.bing.com/th/id/OIP.QBUOwLu6tlWmVFqSByLO5QHaEK?w=247&h=180&c=7&r=0&o=5&pid=1.7" alt="Profile Picture" class="image profile">
+            
+            <!-- Badge System -->
+            <div class="badge">🏆 Top Poster</div>
+            
+            <!-- Other Images -->
+            <img src="https://th.bing.com/th/id/OIP.sPaOBubke9ysr-nvUcuTRwHaF7?w=215&h=180&c=7&r=0&o=5&pid=1.7" alt="Image 2" class="image">
+            <img src="https://via.placeholder.com/150" alt="Image 3" class="image">
+            <img src="https://via.placeholder.com/150" alt="Image 4" class="image">
+            <img src="https://via.placeholder.com/150" alt="Image 5" class="image">
+            <img src="https://via.placeholder.com/150" alt="Image 6" class="image">
+        </div>
+        <a href="index.html" class="back-button">Back</a>
+    </div>
+</body>
+</html>
