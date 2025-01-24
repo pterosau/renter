@@ -46,41 +46,50 @@
             font-size: 12px;
         }
 
-        .logo {
+        .header {
             display: flex;
-            justify-content: center;
             align-items: center;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            background: #222;
+            color: white;
         }
 
-        .logo img {
+        .header img {
+            border-radius: 50%;
             width: 50px;
             height: 50px;
+            margin-right: 10px;
+        }
+
+        .header .info {
+            flex-grow: 1;
+        }
+
+        .header .info h1 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .header .info p {
+            margin: 0;
+            font-size: 12px;
+            color: #aaa;
         }
 
         .search-bar {
-            margin: 10px;
+            padding: 10px 20px;
+            background: #333;
             display: flex;
-            align-items: center;
-            background: #fff;
-            border-radius: 20px;
-            padding: 5px 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            justify-content: center;
         }
 
         .search-bar input {
-            flex: 1;
+            width: 100%;
+            padding: 10px;
             border: none;
+            border-radius: 20px;
             outline: none;
-            padding: 5px;
-        }
-
-        .search-bar button {
-            border: none;
-            background: none;
-            cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .screen {
@@ -90,9 +99,8 @@
             overflow-y: auto;
             box-sizing: border-box;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            position: relative;
         }
 
         .button-group {
@@ -113,38 +121,87 @@
             font-size: 14px;
         }
 
-        .modal {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #fff;
-            border-top-left-radius: 16px;
-            border-top-right-radius: 16px;
-            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
-            padding: 20px;
-            display: none;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .modal .option {
-            padding: 10px;
-            background: #f5f5f5;
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .modal .option.delete {
-            color: red;
-            font-weight: bold;
-        }
-
-        .modal.active {
+        .button.z-button {
             display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            background-color: black;
+            color: white;
+            font-weight: bold;
+            margin: 0 auto;
         }
+
+        .image-view {
+            width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: cover;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .button1 {
+            background: linear-gradient(to bottom, blue, white, pink);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        .chat-popup {
+            position: absolute;
+            bottom: -50%;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: #222;
+            color: white;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+            transform: translateY(100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .chat-popup.open {
+            transform: translateY(0);
+        }
+
+        .chat-popup h2 {
+            margin: 10px 0;
+        }
+
+        .large-button {
+            width: 90%;
+            margin: 20px auto 0;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            background: linear-gradient(to right, #030603, #81c784);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease;
+        }
+
+        .large-button:hover {
+            background: linear-gradient(to right, #43a047, #66bb6a);
+        }
+
     </style>
 </head>
 <body>
@@ -154,37 +211,49 @@
             <span>?? 80%</span>
         </div>
 
-        <div class="logo">
-            <img src="response logo version 3.JPG" alt="Logo">
-            <h2 style="color:yellow;">Response</h2>
+        <div class="header">
+            <img src="response logo version 3.JPG" alt="Profile Picture">
+            
+            <div class="info">
+                <h1>Response</h1>
+                <p>Name: Nicki minaj</p>
+                <p>Status: Edit</p>
+            </div>
+            <img src="coin icon.png" alt="">
         </div>
 
         <div class="search-bar">
-            <input type="text" placeholder="Search...username">
-            <button>&#128269;</button>
+            <input type="text" placeholder="Search username...">
         </div>
 
         <div class="screen">
-            <img src="3.jpg" alt="" height="100" width="100">
-            <img src="data:image/jpeg;base64,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" style="border-radius: 10px;" width="200" alt="Post">
-            
-
-            <div class="modal" id="actionModal">
-                <div class="option">Edit</div>
-                <div class="option">Pin to Your Profile</div>
-                <div class="option">Turn Off Commenting</div>
-                <div class="option">Archive</div>
-                <div class="option delete">Delete</div>
+            <video src="1.mp4" style="width: 100%;height: 50%; border-radius: 10px;" controls></video>
+            <div class="button-group">
+                <a href="images-page.html"><button class="button1">Videos: <span style="color:grey;">0</span></button></a>
+                
+                <button class="button1">Photos: <span style="color:grey;">0</span></button>
+                <button class="button1">Important Links: <span style="color:grey;">0</span></button>
+                <button class="button1">Shop-sell: <span style="color:grey;">0</span></button>
+                <button class="button1">Block</button>
             </div>
+            
+            <button class="large-button">Chat</button>
         </div>
-        <button class="button" onclick="toggleModal()">Options</button>
+
+        <div class="chat-popup" id="chatPopup">
+            <h2>Chat</h2>
+            <p>Welcome to the chat interface!</p>
+            <button class="button1" id="closeButton">Close</button>
+        </div>
     </div>
 
     <script>
-        function toggleModal() {
-            const modal = document.getElementById('actionModal');
-            modal.classList.toggle('active');
-        }
+        const chatPopup = document.getElementById('chatPopup');
+        const closeButton = document.getElementById('closeButton');
+
+        closeButton.addEventListener('click', () => {
+            chatPopup.classList.remove('open');
+        });
     </script>
 </body>
 </html>
