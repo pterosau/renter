@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installing WebConnect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .install-container {
+            background: #292b2c;
+            color: white;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            width: 400px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        }
+        .install-header {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .install-progress-container {
+            background: #444;
+            border-radius: 5px;
+            height: 20px;
+            margin: 30px 0;
+            width: 100%;
+            overflow: hidden;
+        }
+        .install-progress {
+            background-color: #ff5733;
+            height: 100%;
+            width: 0%;
+            border-radius: 5px;
+            transition: width 0.5s ease-in-out;
+        }
+        .install-status {
+            font-size: 18px;
+            margin-top: 15px;
+        }
+        .install-footer {
+            font-size: 14px;
+            color: #888;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="install-container">
+        <div class="install-header">
+            <h2>Installing WebConnect...</h2>
+        </div>
+
+        <div class="install-progress-container">
+            <div class="install-progress" id="progress"></div>
+        </div>
+
+        <div class="install-status" id="status">
+            Preparing installation...
+        </div>
+
+        <div class="install-footer">
+            <p>Do not turn off your device during installation.</p>
+        </div>
+    </div>
+
+    <script>
+        let progress = 0;
+        let statusMessages = [
+            'Initializing installation...',
+            'Extracting files...',
+            'Setting up environment...',
+            'Installing components...',
+            'Finishing installation...',
+            'Installation complete!'
+        ];
+
+        function updateProgress() {
+            if (progress < 100) {
+                progress += 2; // Increment by 2% for a smooth progress effect
+                document.getElementById('progress').style.width = `${progress}%`;
+
+                // Update status message every few percent
+                if (progress % 20 === 0 && progress < 100) {
+                    document.getElementById('status').textContent = statusMessages[progress / 20];
+                }
+
+                // Simulate the final status when it reaches 100%
+                if (progress === 100) {
+                    setTimeout(() => {
+                        document.getElementById('status').textContent = statusMessages[5];
+                    }, 1000);
+                }
+
+                setTimeout(updateProgress, 100); // Call this function again after 100ms
+            }
+        }
+
+        // Start the fake installation process
+        updateProgress();
+    </script>
+</body>
+</html>
