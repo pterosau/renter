@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decentralized Web Browser</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            /* background-color: #f0f0f0; */
+            background-image:url('flowers (3).jpg')
+        }
+        /* Header/Navigation Bar */
+        .header {
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 24px;
+            font-weight: bold;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .logo {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #007bff;
+            margin-top: 70px;
+            margin-bottom: 20px;
+        }
+
+        /* Container Layout */
+        .container {
+            display: flex;
+            width: 100%;
+            height: calc(100vh - 120px); /* Subtract header height */
+            padding: 20px;
+            background: #fff;
+            margin-top: 70px;
+        }
+        .left-panel {
+            flex: 1;
+            padding-right: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .divider {
+            width: 2px;
+            background-color: #ccc;
+            height: auto;
+            margin: 0 20px;
+        }
+        .right-panel {
+            flex: 2;
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Search Bar */
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin-left: 10px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* File Listings */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        /* Websites and Uploaded Files Section */
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #4CAF50;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        /* Footer */
+        .footer {
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 16px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .left-panel, .right-panel {
+                flex: none;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with the website title -->
+    <div class="header">Decentralized Web Browser</div>
+    
+    <!-- Logo -->
+    <div class="logo">🌐 WebConnect
+        
+    </div>
+    <input type="search" style="position:absolute;top:10px;left:0px;" title="stash your money here" placeholder="enter voucher pin"/>
+    <p style="position:absolute;left:0px;" title="get answers to questions by real people">Balance:R10 (i)</p>
+    <p style="position:absolute;left:140px;" title="get answers to questions by real people">Transfer</p>
+    <p style="position:absolute;left:200px;" title="get answers to questions by real people">Balance:R10</p>
+<p style="position:absolute;left:300px;" title="get answers to questions by real people"> Questions board:get answers to questions by real people</p>
+<p style="position:absolute;left:750px;" title="get answers to questions by real people">Answer questions:get rewarded</p>
+<p style="position:absolute;left:1000px;" title="get answers to questions by real people">Shop</p>
+<p style="position:absolute;left:1200px;" title="get answers to questions by real people">Jobs</p>
+
+
+    <!-- Main Container with Left and Right Panels -->
+    <div class="container">
+        <!-- Left Panel: Search for Files -->
+        <div class="left-panel">
+            <h2>Search Files</h2>
+            <input type="text" id="searchInput" placeholder="Search or enter web address">
+            <button onclick="searchFiles()">Search</button><br>
+            <button onclick="searchFiles()">Upload</button><br>
+            
+           <img src="https://th.bing.com/th/id/OIP.kqBZgGbjcR8nXMzuD0ZYSAHaHa?rs=1&pid=ImgDetMain" alt="">
+            <ul id="results"></ul>
+        </div>
+        
+        <!-- Divider Between Panels -->
+        <div class="divider"></div>
+        
+        <!-- Right Panel: Display Websites and Upload Settings -->
+        <div class="right-panel">
+            <h2>Uploaded Files:</h2>
+            <p>Upload your files to share with others.</p>
+            
+            <h2>Websites:</h2>
+
+            <table>
+            <th>website</th>
+            <th>uploaded by</th>
+            <th>bookmarked</th>
+            <th>Paying</th>
+            <th>Type</th>
+
+                <tr>
+                    <td><a href="https://www.youtube.com" target="_blank">
+                        <li>youtube.com</li>
+                    </a></td>
+                    <td>Jawed</td>
+                    <td>12</td>
+                    <td>R10</td>
+                    <td>Free</td>
+                </tr>
+
+                <tr>
+                    <td><a href="https://www.youtube.com" target="_blank">
+                        <li>chat gpt</li>
+                    </a></td>
+                    <td>sam altman</td>
+                    <td>12</td>
+                    <td>R10</td>
+                    <td>Free</td>
+                </tr>
+            </table>
+            <ul>
+                
+                <li>example2.net</li>
+                <li>example3.org</li>
+            </ul>
+
+            <!-- Toggle switch to enable file sharing -->
+            <div class="toggle-container">
+                <label class="toggle-switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+                <span style="margin-left: 10px;">Enable to make your files shareable</span>
+            </div>
+
+            <!-- Preview Section -->
+            <iframe id="preview" src="" frameborder="0">
+                
+            </iframe>
+        </div>
+    </div>
+    
+    <!-- Footer with some additional information -->
+    <div class="footer">Powered by WebConnect | Decentralized File Sharing</div>
+
+    <script>
+        function searchFiles() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const results = document.getElementById('results');
+            results.innerHTML = '';
+
+            fetch(`http://127.0.0.1:5000/search?query=${query}`)
+                .then(response => response.json())
+                .then(files => {
+                    files.forEach(file => {
+                        const li = document.createElement('li');
+                        const link = document.createElement('a');
+                        link.href = `http://127.0.0.1:5000/file?path=${encodeURIComponent(file)}`;
+                        link.textContent = file;
+                        link.target = '_blank';
+                        link.onclick = (e) => {
+                            e.preventDefault();
+                            document.getElementById('preview').src = link.href;
+                        };
+                        li.appendChild(link);
+                        results.appendChild(li);
+                    });
+                });
+        }
+    </script>
+</body>
+</html>
